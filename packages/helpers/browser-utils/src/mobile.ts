@@ -6,6 +6,9 @@ export const mobileLinkChoiceKey = "WALLETCONNECT_DEEPLINK_CHOICE";
 
 export function formatIOSMobile(uri: string, entry: IMobileRegistryEntry) {
   const encodedUri: string = encodeURIComponent(uri);
+  if (entry.name === 'MetaMask') {
+    return `dapp://wc?uri=${encodedUri}`
+  }
   return entry.universalLink
     ? `${entry.universalLink}/wc?uri=${encodedUri}`
     : entry.deepLink
